@@ -9,7 +9,7 @@ from .transforms import build_transforms
 from .samplers import RandomIdentitySampler
 
 
-class BaseDataManager(object):
+class BaseDataManager:
 
     @property
     def num_train_pids(self):
