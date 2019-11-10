@@ -1,0 +1,24 @@
+python train.py -s naic \
+    -t naic \
+    --flip-eval --eval-freq 1 \
+    --label-smooth \
+    --criterion htri \
+    --lambda-htri 0.1  \
+    --data-augment crop random-erase \
+    --margin 1.2 \
+    --train-batch-size 48 \
+    --height 384 \
+    --width 128 \
+    --optim adam --lr 0.0003 \
+    --stepsize 20 40 \
+    --gpu-devices 0,1 \
+    --max-epoch 80 \
+    --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic \
+    --arch resnet50 \
+    --use-of \
+    --abd-dan cam pam \
+    --abd-np 2 \
+    --shallow-cam \
+    --use-ow \
+    --workers 10 \
+    --root /home/arron/dataset

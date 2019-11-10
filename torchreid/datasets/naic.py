@@ -56,6 +56,6 @@ class Naic(BaseImageDataset):
         for line in lines:
             relate_path, label = line.split(" ")
             label = label[:-1]
-            dataset.append((osp.join(self.dataset_dir, relate_path), label, 1))
+            dataset.append((osp.join(self.dataset_dir, relate_path), int(label), 1))
 
         return dataset
