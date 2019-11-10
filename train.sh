@@ -6,7 +6,7 @@ python train.py -s market1501 \
     --lambda-htri 0.1  \
     --data-augment crop random-erase \
     --margin 1.2 \
-    --train-batch-size 64 \
+    --train-batch-size 48 \
     --height 384 \
     --width 128 \
     --optim adam --lr 0.0003 \
@@ -21,4 +21,5 @@ python train.py -s market1501 \
     --shallow-cam \
     --use-ow \
     --workers 10 \
-    --root /home/arron/dataset
+    --root /home/arron/dataset \
+    --load-weights /home/arron/PycharmProjects/ABD-Net/model/checkpoint_ep23.pth.tar
