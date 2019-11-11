@@ -21,5 +21,4 @@ python train.py -s market1501 \
     --shallow-cam \
     --use-ow \
     --workers 10 \
-    --root /home/arron/dataset \
-    --load-weights /home/arron/PycharmProjects/ABD-Net/model/checkpoint_ep23.pth.tar
+    --root /home/arron/dataset

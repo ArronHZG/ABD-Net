@@ -22,3 +22,4 @@ python train.py -s naic \
     --use-ow \
     --workers 10 \
     --root /home/arron/dataset
+    --load-weights --/home/arron/PycharmProjects/ABD-Net/model/naic/checkpoint_ep1.pth.tar
