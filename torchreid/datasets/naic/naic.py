@@ -42,11 +42,11 @@ class Naic(BaseImageDataset):
         if not osp.exists(self.dataset_dir):
             raise RuntimeError("'{}' is not available".format(self.dataset_dir))
         if not osp.exists(self.train_list_txt):
-            raise RuntimeError("'{}' is not available".format(self.train_dir))
+            raise RuntimeError("'{}' is not available".format(self.train_list_txt))
         if not osp.exists(self.query_list_txt):
-            raise RuntimeError("'{}' is not available".format(self.query_dir))
+            raise RuntimeError("'{}' is not available".format(self.query_list_txt))
         if not osp.exists(self.gallery_list_txt):
-            raise RuntimeError("'{}' is not available".format(self.gallery_dir))
+            raise RuntimeError("'{}' is not available".format(self.gallery_list_txt))
 
     def _process_dir(self, list_txt_path):
         dataset = []
