@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from .naic import Naic
 from .cuhk01 import CUHK01
 from .cuhk03 import CUHK03
 from .dukemtmcreid import DukeMTMCreID
@@ -14,7 +15,6 @@ from .market1501 import Market1501
 from .market1501_d import Market1501_D
 from .mars import Mars
 from .msmt17 import MSMT17
-from .naic import Naic
 from .prid2011 import PRID2011
 from .prid450s import PRID450S
 from .sensereid import SenseReID

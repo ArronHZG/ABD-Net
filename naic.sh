@@ -21,5 +21,5 @@ python train.py -s naic \
     --shallow-cam \
     --use-ow \
     --workers 10 \
-    --root /home/arron/dataset
-    --load-weights --/home/arron/PycharmProjects/ABD-Net/model/naic/checkpoint_ep1.pth.tar
+    --root /home/arron/dataset \
+    --fixbase-epoch 0

@@ -1,6 +1,6 @@
 import os.path as osp
 
-from .bases import BaseImageDataset
+from torchreid.datasets.bases import BaseImageDataset
 
 
 class Naic(BaseImageDataset):
@@ -15,9 +15,9 @@ class Naic(BaseImageDataset):
     def __init__(self, root='root', verbose=True, **kwargs):
         super(Naic, self).__init__()
         self.dataset_dir = osp.join(root, 'naic', "naic-train")
-        self.train_list_txt = osp.join(self.dataset_dir, 'train_list.txt')
-        self.query_list_txt = osp.join(self.dataset_dir, 'query_list.txt')
-        self.gallery_list_txt = osp.join(self.dataset_dir, 'gallery_list.txt')
+        self.train_list_txt = 'train_list.txt'
+        self.query_list_txt = 'query_list.txt'
+        self.gallery_list_txt = 'gallery_list.txt'
 
         self._check_before_run()
 
