@@ -174,30 +174,30 @@ def main():
 
         scheduler.step()
 
-        if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (epoch + 1) == args.max_epoch:
-            print("==> Test")
-
-            for name in args.target_names:
-                print("Evaluating {} ...".format(name))
-                queryloader = testloader_dict[name]['query'], testloader_dict[name]['query_flip']
-                galleryloader = testloader_dict[name]['gallery'], testloader_dict[name]['gallery_flip']
-                rank1 = test(model, queryloader, galleryloader, use_gpu)
-                ranklogger.write(name, epoch + 1, rank1)
-
-            if use_gpu:
-                state_dict = model.module.state_dict()
-            else:
-                state_dict = model.state_dict()
-
-            if max_r1 < rank1:
-                print('Save!', max_r1, rank1)
-                save_checkpoint({
-                    'state_dict': state_dict,
-                    'rank1': rank1,
-                    'epoch': epoch,
-                }, False, osp.join(args.save_dir, 'checkpoint_best.pth.tar'))
-
-                max_r1 = rank1
+        # if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (epoch + 1) == args.max_epoch:
+        #     print("==> Test")
+        #
+        #     for name in args.target_names:
+        #         print("Evaluating {} ...".format(name))
+        #         queryloader = testloader_dict[name]['query'], testloader_dict[name]['query_flip']
+        #         galleryloader = testloader_dict[name]['gallery'], testloader_dict[name]['gallery_flip']
+        #         rank1 = test(model, queryloader, galleryloader, use_gpu)
+        #         ranklogger.write(name, epoch + 1, rank1)
+        #
+        #     if use_gpu:
+        #         state_dict = model.module.state_dict()
+        #     else:
+        #         state_dict = model.state_dict()
+        #
+        #     if max_r1 < rank1:
+        #         print('Save!', max_r1, rank1)
+        #         save_checkpoint({
+        #             'state_dict': state_dict,
+        #             'rank1': rank1,
+        #             'epoch': epoch,
+        #         }, False, osp.join(args.save_dir, 'checkpoint_best.pth.tar'))
+        #
+        #         max_r1 = rank1
 
     elapsed = round(time.time() - start_time)
     elapsed = str(datetime.timedelta(seconds=elapsed))
