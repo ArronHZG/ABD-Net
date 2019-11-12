@@ -22,4 +22,5 @@ python train.py -s naic \
     --use-ow \
     --workers 10 \
     --root /home/arron/dataset \
-    --fixbase-epoch 0
+    --fixbase-epoch 10 
+    # --evaluate
