@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" autoUpload="Always" serverName="arron@10.103.244.125:22">
     <serverData>
+      <paths name="arron@10.103.244.125:22">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_821" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="arron@10.103.246.108:22">
         <serverdata>
           <mappings>
@@ -17,5 +24,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>

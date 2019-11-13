@@ -22,5 +22,6 @@ python train.py -s naic \
     --use-ow \
     --workers 10 \
     --root /home/arron/dataset \
-    --fixbase-epoch 10 
-    # --evaluate
+    --fixbase-epoch 10 \
+    --load-weights '/home/arron/PycharmProjects/ABD-Net/model/naic/checkpoint_ep80.pth.tar' \
+    --evaluate
