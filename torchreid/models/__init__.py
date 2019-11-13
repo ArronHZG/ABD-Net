@@ -1,25 +1,22 @@
 from __future__ import absolute_import
 
+from . import densenet, resnet
+from .hacnn import *
+# from .densenet import *
+from .inceptionresnetv2 import *
+from .inceptionv4 import *
+from .mlfn import *
+from .mobilenetv2 import *
+from .mudeep import *
+from .nasnet import *
+from .pcb import *
 # from .resnet import *
 from .resnetmid import *
 from .resnext import *
 from .senet import *
-# from .densenet import *
-from .inceptionresnetv2 import *
-from .inceptionv4 import *
-from .xception import *
-
-from .nasnet import *
-from .mobilenetv2 import *
 from .shufflenet import *
 from .squeezenet import *
-
-from .mudeep import *
-from .hacnn import *
-from .pcb import *
-from .mlfn import *
-
-from . import densenet, resnet
+from .xception import *
 
 __model_factory = {
     **densenet.model_mapping,
