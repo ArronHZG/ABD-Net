@@ -12,7 +12,6 @@ import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 import torch.nn as nn
-from torch.optim import lr_scheduler
 
 from args import argument_parser, image_dataset_kwargs, optimizer_kwargs
 from torchreid import models
@@ -88,7 +87,10 @@ def main():
     criterion = get_criterion(dm.num_train_pids, use_gpu, args)
     regularizer = get_regularizer(vars(args))
     optimizer = init_optimizer(model.parameters(), **optimizer_kwargs(args))
-    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=args.stepsize, gamma=args.gamma)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min',
+                                                           factor=0.8,
+                                                           patience=3,
+                                                           verbose=True)
 
     if args.load_weights and check_isfile(args.load_weights):
         # load pretrained weights but ignore layers that don't match in size
@@ -105,12 +107,16 @@ def main():
         model.load_state_dict(model_dict)
         print("Loaded pretrained weights from '{}'".format(args.load_weights))
 
+    max_r1 = 0
+
     if args.resume and check_isfile(args.resume):
         checkpoint = torch.load(args.resume)
         state = model.state_dict()
         state.update(checkpoint['state_dict'])
         model.load_state_dict(state)
+        optimizer.load_state_dict(checkpoint['optimizer'])
         # args.start_epoch = checkpoint['epoch'] + 1
+        max_r1 = checkpoint['rank1']
         print("Loaded checkpoint from '{}'".format(args.resume))
         print("- start_epoch: {}\n- rank1: {}".format(args.start_epoch, checkpoint['rank1']))
 
@@ -154,14 +160,13 @@ def main():
         optimizer.load_state_dict(initial_optim_state)
         os.environ['sa'] = oldenv
 
-    max_r1 = 0
-
     for epoch in range(args.start_epoch, args.max_epoch):
         start_train_time = time.time()
-        print(f"epoch {epoch} now {now()}")
+        print(f"epoch {epoch + 1} now {now()}======================================================================")
         print(criterion)
+        print(f"lr:{optimizer.param_groups[0]['lr']}")
 
-        train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
+        loss = train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
         train_time += round(time.time() - start_train_time)
 
         if use_gpu:
@@ -169,13 +174,9 @@ def main():
         else:
             state_dict = model.state_dict()
 
-        save_checkpoint({
-            'state_dict': state_dict,
-            'rank1': 0,
-            'epoch': epoch,
-        }, False, osp.join(args.save_dir, 'checkpoint_ep' + str(epoch + 1) + '.pth.tar'))
 
-        scheduler.step()
+
+        scheduler.step(loss)
 
         if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (
                 epoch + 1) == args.max_epoch:
@@ -199,9 +200,19 @@ def main():
                     'state_dict': state_dict,
                     'rank1': rank1,
                     'epoch': epoch,
+                    'optimizer': optimizer.state_dict(),
                 }, False, osp.join(args.save_dir, 'checkpoint_best.pth.tar'))
 
                 max_r1 = rank1
+
+        save_checkpoint({
+            'state_dict': state_dict,
+            'rank1': rank1,
+            'epoch': epoch,
+            'optimizer': optimizer.state_dict(),
+        }, False, osp.join(args.save_dir, 'checkpoint_ep' + str(epoch + 1) + '.pth.tar'))
+
+
     elapsed = round(time.time() - start_time)
     elapsed = str(datetime.timedelta(seconds=elapsed))
     train_time = str(datetime.timedelta(seconds=train_time))
@@ -269,8 +280,8 @@ def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu,
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(
                 epoch + 1, batch_idx + 1, len(trainloader), batch_time=batch_time,
                 data_time=data_time, loss=losses))
-
         end = time.time()
+    return losses.avg
 
 
 def test(model, queryloader, galleryloader, use_gpu, ranks=[1, 5, 10, 20], return_distmat=False):

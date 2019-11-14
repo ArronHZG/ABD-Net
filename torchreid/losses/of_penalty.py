@@ -6,15 +6,10 @@ import logging
 import torch
 import torch.nn as nn
 
-import os
-
-from .cross_entropy_loss import CrossEntropyLoss
-
 logger = logging.getLogger(__name__)
 
 
 class OFPenalty(nn.Module):
-
     _WARNED = False
 
     def __init__(self, args):
@@ -78,9 +73,10 @@ class OFPenalty(nn.Module):
             self._WARNED = True
 
             import warnings
-            warnings.warn('OF positions {!r} are missing. IGNORED.'.format(list(missing)))
+            warnings.warn(f'OF positions {list(missing)} are missing. IGNORED.')
 
-        singular_penalty = sum([self.apply_penalty(k, x) for k, x in feature_dict.items() if k in self.penalty_position])
+        singular_penalty = sum(
+            [self.apply_penalty(k, x) for k, x in feature_dict.items() if k in self.penalty_position])
 
         logger.debug(str(singular_penalty))
         return singular_penalty
