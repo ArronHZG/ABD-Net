@@ -20,6 +20,7 @@ from torchreid.transforms import build_transforms
 from torchreid.utils.iotools import check_isfile
 from torchreid.utils.reid_metric import R1_mAP, R1_mAP_reranking
 
+max_tank = 50
 
 def create_supervised_evaluator(model,
                                 metrics,
@@ -46,6 +47,7 @@ def create_supervised_evaluator(model,
             data, pids, camids = batch
             data = data.to(device) if torch.cuda.device_count() >= 1 else data
             feat = model(data)
+            # print(len(feat))
             return feat, pids, camids
 
     engine = Engine(_inference)
@@ -70,12 +72,12 @@ def inference(
     if re_ranking == 'no':
         print("Create evaluator")
         evaluator = create_supervised_evaluator(model, metrics={
-            'r1_mAP': R1_mAP(num_query, max_rank=50, feat_norm=feat_norm)},
+            'r1_mAP': R1_mAP(num_query, max_rank=max_tank, feat_norm=feat_norm)},
                                                 device=device)
     elif re_ranking == 'yes':
         print("Create evaluator for reranking")
         evaluator = create_supervised_evaluator(model, metrics={
-            'r1_mAP': R1_mAP_reranking(num_query, max_rank=50, feat_norm=feat_norm)},
+            'r1_mAP': R1_mAP_reranking(num_query, max_rank=max_tank, feat_norm=feat_norm)},
                                                 device=device)
     else:
         print("Unsupported re_ranking config. Only support for no or yes, but got {}.".format(re_ranking))
@@ -142,7 +144,7 @@ if __name__ == '__main__':
     else:
         print("no weight file!!!")
 
-    RE_RANKING = 'yes'
+    RE_RANKING = 'no'
     FEAT_NORM = 'yes'
     num_query = 0
 

@@ -5,7 +5,7 @@ python inference.py \
     --start-epoch 60 --max-epoch 150 \
     --stepsize 20 40 60 80 120 140 \
     --train-batch-size 32 \
-    --test-batch-size 64 \
+    --test-batch-size 32 \
     --fixbase-epoch 0 \
     --label-smooth \
     --criterion htri \
