@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="605bf587-aeab-4ae3-93e0-a4a3589a1ab1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/naic-test-3.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/torchreid/datasets/collate_batch.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/torchreid/utils/re_ranking.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/torchreid/utils/reid_metric.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ABD-Net.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ABD-Net.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naic-train-3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/naic-train-3.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naic-train-4.sh" beforeDir="false" afterPath="$PROJECT_DIR$/naic-train-4.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torchreid/datasets/cuhk01.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchreid/datasets/cuhk01.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torchreid/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchreid/transforms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torchreid/utils/avgmeter.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchreid/utils/avgmeter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-    </list>
+    <list default="true" id="605bf587-aeab-4ae3-93e0-a4a3589a1ab1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,17 +242,6 @@
               <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
               <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
-              <item name="torchreid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
-              <item name="torchreid" type="462c0819:PsiDirectoryNode" />
-              <item name="datasets" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -378,7 +351,7 @@
       <workItem from="1573612673463" duration="13229000" />
       <workItem from="1573696763295" duration="18505000" />
       <workItem from="1573736224837" duration="2361000" />
-      <workItem from="1573739155905" duration="3729000" />
+      <workItem from="1573739155905" duration="3990000" />
     </task>
     <task id="LOCAL-00001" summary="naic">
       <created>1573406676510</created>
@@ -450,11 +423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573733680768</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="inference">
+      <created>1573743408801</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1573743408801</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55050000" />
+    <option name="totallyTimeSpent" value="55311000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -507,7 +487,8 @@
     <MESSAGE value="naic -train 3" />
     <MESSAGE value="naic -train 4" />
     <MESSAGE value="auto reset lr" />
-    <option name="LAST_COMMIT_MESSAGE" value="auto reset lr" />
+    <MESSAGE value="inference" />
+    <option name="LAST_COMMIT_MESSAGE" value="inference" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ABD_Net$prepare_list.coverage" NAME="prepare_list Coverage Results" MODIFIED="1573451744366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
