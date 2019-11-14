@@ -54,6 +54,12 @@ def now():
     return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
 
 
+def auto_reset_learning_rate(optimizer, args):
+    if optimizer.param_groups[0]['lr'] <= 1e-7:
+        for param_group in optimizer.param_groups:
+            param_group['lr'] = args.lr
+
+
 def main():
     global args
 
@@ -161,6 +167,7 @@ def main():
         os.environ['sa'] = oldenv
 
     for epoch in range(args.start_epoch, args.max_epoch):
+        auto_reset_learning_rate(optimizer, args)
         start_train_time = time.time()
         print(f"epoch {epoch + 1} now {now()}======================================================================")
         print(criterion)
@@ -169,12 +176,11 @@ def main():
         loss = train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
         train_time += round(time.time() - start_train_time)
 
+
         if use_gpu:
             state_dict = model.module.state_dict()
         else:
             state_dict = model.state_dict()
-
-
 
         scheduler.step(loss)
 
@@ -211,7 +217,6 @@ def main():
             'epoch': epoch,
             'optimizer': optimizer.state_dict(),
         }, False, osp.join(args.save_dir, 'checkpoint_ep' + str(epoch + 1) + '.pth.tar'))
-
 
     elapsed = round(time.time() - start_time)
     elapsed = str(datetime.timedelta(seconds=elapsed))

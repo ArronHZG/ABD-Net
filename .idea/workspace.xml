@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="605bf587-aeab-4ae3-93e0-a4a3589a1ab1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/naic-train-4.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naic-train-3.sh" beforeDir="false" afterPath="$PROJECT_DIR$/naic-train-3.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/torchreid/losses/of_penalty.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchreid/losses/of_penalty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,20 +13,76 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="406">
+              <caret line="178" selection-start-line="178" selection-end-line="178" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#1182#1664#0" />
+                <element signature="e#1220#1349#0" />
+                <element signature="e#1395#1558#0" />
+                <element signature="e#1682#1752#0" />
+                <element signature="e#2218#2351#0" />
+                <element signature="e#3629#3724#0" />
+                <element signature="e#4731#5416#0" />
+                <element signature="e#4806#5401#0" />
+                <element signature="e#5186#5401#0" />
+                <element signature="e#5604#6277#0" />
+                <element signature="e#5901#6098#0" />
+                <element signature="e#7324#8316#0" />
+                <element signature="e#7402#7773#0" />
+                <element signature="e#7968#8316#0" />
+                <element signature="e#8030#8224#0" />
+                <element signature="e#8104#8254#0" />
+                <element signature="e#8722#10543#0" />
+                <element signature="e#9245#10521#0" />
+                <element signature="e#9690#9738#0" />
+                <element signature="e#9824#9881#0" />
+                <element signature="e#10123#10495#0" />
+                <element signature="e#10129#10353#0" />
+                <element signature="e#10648#14444#0" />
+                <element signature="e#10815#13515#0" />
+                <element signature="e#11081#11808#0" />
+                <element signature="e#11142#11398#0" />
+                <element signature="e#11433#11580#0" />
+                <element signature="e#12303#13054#0" />
+                <element signature="e#12392#12648#0" />
+                <element signature="e#12683#12826#0" />
+                <element signature="e#13324#13515#0" />
+                <element signature="e#13910#14029#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/naic-train-4.sh">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/-137951912/-1513097306/torch/nn/modules/module.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+            <state relative-caret-position="118">
+              <caret line="854" column="8" selection-start-line="854" selection-start-column="8" selection-end-line="854" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/args.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/torchreid/optimizers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -45,7 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Computing CMC and mAP</find>
       <find>test</find>
       <find>flip-eval</find>
       <find>flip</find>
@@ -75,6 +127,7 @@
       <find>max_r1</find>
       <find>of_penalty</find>
       <find>scheduler</find>
+      <find>optimizer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -117,10 +170,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="86" />
-    <option name="y" value="88" />
-    <option name="width" value="1598" />
-    <option name="height" value="1834" />
+    <option name="x" value="-14" />
+    <option name="y" value="-14" />
+    <option name="width" value="2762" />
+    <option name="height" value="1850" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -224,7 +277,7 @@
       <workItem from="1573401977881" duration="6791000" />
       <workItem from="1573409371349" duration="10435000" />
       <workItem from="1573612673463" duration="13229000" />
-      <workItem from="1573696763295" duration="13390000" />
+      <workItem from="1573696763295" duration="16671000" />
     </task>
     <task id="LOCAL-00001" summary="naic">
       <created>1573406676510</created>
@@ -282,11 +335,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573713015190</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="naic -train 4">
+      <created>1573721944028</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1573721944028</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43845000" />
+    <option name="totallyTimeSpent" value="47126000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -298,10 +358,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-7" y="-7" width="1381" height="925" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1684435" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31773585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -317,7 +377,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40491453" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32692307" />
-      <window_info active="true" anchor="bottom" id="File Transfer" order="13" visible="true" weight="0.27457264" />
+      <window_info active="true" anchor="bottom" id="File Transfer" order="13" visible="true" weight="0.2119636" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,19 +398,13 @@
     <MESSAGE value="test" />
     <MESSAGE value="train-2" />
     <MESSAGE value="naic -train 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="naic -train 3" />
+    <MESSAGE value="naic -train 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="naic -train 4" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ABD_Net$prepare_list.coverage" NAME="prepare_list Coverage Results" MODIFIED="1573451744366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gallery_list.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386169">
-          <caret line="18389" column="24" selection-start-line="18389" selection-start-column="24" selection-end-line="18389" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/query_list.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -622,13 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/torchreid/optimizers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/torchreid/data_manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4167">
@@ -761,23 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/args.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="77" column="36" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naic-train-3.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="94" column="35" selection-start-line="94" selection-start-column="35" selection-end-line="94" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/torchreid/regularizers/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
@@ -795,17 +825,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train.py">
+    <entry file="file://$PROJECT_DIR$/naic-train-3.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="503">
+          <caret line="146" column="11" lean-forward="true" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/naic-train-4.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="167">
           <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/torchreid/optimizers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/remote_sources/-137951912/-1513097306/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="854" column="8" selection-start-line="854" selection-start-column="8" selection-end-line="854" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/args.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="244" column="4" selection-start-line="244" selection-start-column="4" selection-end-line="244" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="178" selection-start-line="178" selection-end-line="178" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#1182#1664#0" />
+            <element signature="e#1220#1349#0" />
+            <element signature="e#1395#1558#0" />
+            <element signature="e#1682#1752#0" />
+            <element signature="e#2218#2351#0" />
+            <element signature="e#3629#3724#0" />
+            <element signature="e#4731#5416#0" />
+            <element signature="e#4806#5401#0" />
+            <element signature="e#5186#5401#0" />
+            <element signature="e#5604#6277#0" />
+            <element signature="e#5901#6098#0" />
+            <element signature="e#7324#8316#0" />
+            <element signature="e#7402#7773#0" />
+            <element signature="e#7968#8316#0" />
+            <element signature="e#8030#8224#0" />
+            <element signature="e#8104#8254#0" />
+            <element signature="e#8722#10543#0" />
+            <element signature="e#9245#10521#0" />
+            <element signature="e#9690#9738#0" />
+            <element signature="e#9824#9881#0" />
+            <element signature="e#10123#10495#0" />
+            <element signature="e#10129#10353#0" />
+            <element signature="e#10648#14444#0" />
+            <element signature="e#10815#13515#0" />
+            <element signature="e#11081#11808#0" />
+            <element signature="e#11142#11398#0" />
+            <element signature="e#11433#11580#0" />
+            <element signature="e#12303#13054#0" />
+            <element signature="e#12392#12648#0" />
+            <element signature="e#12683#12826#0" />
+            <element signature="e#13324#13515#0" />
+            <element signature="e#13910#14029#0" />
+          </folding>
         </state>
       </provider>
     </entry>
