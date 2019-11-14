@@ -1,12 +1,11 @@
 from __future__ import absolute_import
 from __future__ import division
 
-from collections import defaultdict
-import numpy as np
 import copy
 import random
+from collections import defaultdict
 
-import torch
+import numpy as np
 from torch.utils.data.sampler import Sampler
 
 
@@ -20,6 +19,7 @@ class RandomIdentitySampler(Sampler):
     - num_instances (int): number of instances per identity in a batch.
     - batch_size (int): number of examples in a batch.
     """
+
     def __init__(self, data_source, batch_size, num_instances):
         self.data_source = data_source
         self.batch_size = batch_size

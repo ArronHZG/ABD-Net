@@ -1,5 +1,5 @@
-import os
 import argparse
+import os
 
 
 def argument_parser():
@@ -24,7 +24,9 @@ def argument_parser():
                         help="split index (note: 0-based)")
     parser.add_argument('--train-sampler', type=str, default='',
                         help="sampler for trainloader")
-    parser.add_argument('--data-augment', type=str, nargs='+', choices=['none', 'crop', 'random-erase', 'color-jitter', 'crop,random-erase', 'crop,color-jitter', 'crop,color-jitter,random-erase'], default='crop')
+    parser.add_argument('--data-augment', type=str, nargs='+',
+                        choices=['none', 'crop', 'random-erase', 'color-jitter', 'crop,random-erase',
+                                 'crop,color-jitter', 'crop,color-jitter,random-erase'], default='crop')
     # ************************************************************
     # Video datasets
     # ************************************************************
@@ -171,7 +173,7 @@ def argument_parser():
 
     parser.add_argument('--abd-dim', type=int, default=1024)
     parser.add_argument('--abd-np', type=int, default=2)
-    parser.add_argument('--abd-dan', nargs='+', type=str, default=[])
+    parser.add_argument('--abd-dan', nargs='+', type=str, default=['cam', 'pam'])
     parser.add_argument('--abd-dan-no-head', action='store_true')
     parser.add_argument('--shallow-cam', action='store_true')
 
@@ -210,7 +212,8 @@ def image_dataset_kwargs(parsed_args):
         'train_batch_size': parsed_args.train_batch_size,
         'test_batch_size': parsed_args.test_batch_size,
         'workers': parsed_args.workers,
-        'train_sampler': parsed_args.train_sampler if 'htri' not in parsed_args.criterion or os.environ.get('ns') else 'RandomIdentitySampler',
+        'train_sampler': parsed_args.train_sampler if 'htri' not in parsed_args.criterion or os.environ.get(
+            'ns') else 'RandomIdentitySampler',
         'num_instances': parsed_args.num_instances,
         'cuhk03_labeled': parsed_args.cuhk03_labeled,
         'cuhk03_classic_split': parsed_args.cuhk03_classic_split,

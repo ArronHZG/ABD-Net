@@ -186,6 +186,7 @@ class GlobalBranch(nn.Module):
 
         return predict, xent, triplet, {}
 
+
 class NPBranch(nn.Module):
 
     def __init__(self, owner, backbone, args, input_dim, part_num=None):

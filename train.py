@@ -1,32 +1,31 @@
-from __future__ import print_function
 from __future__ import division
+from __future__ import print_function
 
+import datetime
+import logging
 import os
+import os.path as osp
 import sys
 import time
-import datetime
-import os.path as osp
-import numpy as np
 
+import numpy as np
 import torch
-import torch.nn as nn
 import torch.backends.cudnn as cudnn
+import torch.nn as nn
 from torch.optim import lr_scheduler
 
 from args import argument_parser, image_dataset_kwargs, optimizer_kwargs
-from torchreid.data_manager import ImageDataManager
 from torchreid import models
-from torchreid.utils.iotools import save_checkpoint, check_isfile
-from torchreid.utils.avgmeter import AverageMeter
-from torchreid.utils.loggers import Logger, RankLogger
-from torchreid.utils.torchtools import count_num_param, open_all_layers, open_specified_layers
-from torchreid.utils.reidtools import visualize_ranked_results
+from torchreid.data_manager import ImageDataManager
 from torchreid.eval_metrics import evaluate
 from torchreid.optimizers import init_optimizer
 from torchreid.regularizers import get_regularizer
+from torchreid.utils.avgmeter import AverageMeter
+from torchreid.utils.iotools import save_checkpoint, check_isfile
+from torchreid.utils.loggers import Logger, RankLogger
+from torchreid.utils.reidtools import visualize_ranked_results
+from torchreid.utils.torchtools import count_num_param, open_all_layers, open_specified_layers
 
-
-import logging
 logging.basicConfig(level=os.environ.get('LOGLEVEL', 'CRITICAL'))
 
 # global variables
@@ -37,7 +36,6 @@ os.environ['TORCH_HOME'] = os.path.abspath(os.path.join(os.path.dirname(__file__
 
 
 def get_criterion(num_classes: int, use_gpu: bool, args):
-
     if args.criterion == 'htri':
 
         from torchreid.losses.hard_mine_triplet_loss import TripletLoss
@@ -51,6 +49,10 @@ def get_criterion(num_classes: int, use_gpu: bool, args):
         raise RuntimeError('Unknown criterion {}'.format(args.criterion))
 
     return criterion
+
+
+def now():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
 
 
 def main():
@@ -78,7 +80,8 @@ def main():
     trainloader, testloader_dict = dm.return_dataloaders()
 
     print("Initializing model: {}".format(args.arch))
-    model = models.init_model(name=args.arch, num_classes=dm.num_train_pids, loss={'xent'}, use_gpu=use_gpu, args=vars(args))
+    model = models.init_model(name=args.arch, num_classes=dm.num_train_pids, loss={'xent'}, use_gpu=use_gpu,
+                              args=vars(args))
     print(model)
     print("Model size: {:.3f} M".format(count_num_param(model)))
 
@@ -155,7 +158,7 @@ def main():
 
     for epoch in range(args.start_epoch, args.max_epoch):
         start_train_time = time.time()
-        print(epoch)
+        print(f"epoch {epoch} now {now()}")
         print(criterion)
 
         train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
@@ -174,7 +177,8 @@ def main():
 
         scheduler.step()
 
-        if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (epoch + 1) == args.max_epoch:
+        if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (
+                epoch + 1) == args.max_epoch:
             print("==> Test")
 
             for name in args.target_names:
@@ -198,7 +202,6 @@ def main():
                 }, False, osp.join(args.save_dir, 'checkpoint_best.pth.tar'))
 
                 max_r1 = rank1
-
     elapsed = round(time.time() - start_time)
     elapsed = str(datetime.timedelta(seconds=elapsed))
     train_time = str(datetime.timedelta(seconds=train_time))
@@ -207,7 +210,6 @@ def main():
 
 
 def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False):
-
     if not fixbase and args.use_of and epoch >= args.of_start_epoch:
         print('Using OF')
 
@@ -248,7 +250,6 @@ def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu,
             reg = regularizer(model)
             loss += reg
         if not fixbase and args.use_of and epoch >= args.of_start_epoch:
-
             penalty = of_penalty(outputs)
             loss += penalty
 
@@ -266,14 +267,13 @@ def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu,
                   'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
                   'Data {data_time.val:.4f} ({data_time.avg:.4f})\t'
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'.format(
-                      epoch + 1, batch_idx + 1, len(trainloader), batch_time=batch_time,
-                      data_time=data_time, loss=losses))
+                epoch + 1, batch_idx + 1, len(trainloader), batch_time=batch_time,
+                data_time=data_time, loss=losses))
 
         end = time.time()
 
 
 def test(model, queryloader, galleryloader, use_gpu, ranks=[1, 5, 10, 20], return_distmat=False):
-
     flip_eval = args.flip_eval
 
     if flip_eval:
@@ -358,14 +358,15 @@ def test(model, queryloader, galleryloader, use_gpu, ranks=[1, 5, 10, 20], retur
 
         if os.environ.get('save_feat'):
             import scipy.io as io
-            io.savemat(os.environ.get('save_feat'), {'q': qf.data.numpy(), 'g': gf.data.numpy(), 'qt': q_pids, 'gt': g_pids})
+            io.savemat(os.environ.get('save_feat'),
+                       {'q': qf.data.numpy(), 'g': gf.data.numpy(), 'qt': q_pids, 'gt': g_pids})
             # return
 
     print("==> BatchTime(s)/BatchSize(img): {:.3f}/{}".format(batch_time.avg, args.test_batch_size))
 
     m, n = qf.size(0), gf.size(0)
     distmat = torch.pow(qf, 2).sum(dim=1, keepdim=True).expand(m, n) + \
-        torch.pow(gf, 2).sum(dim=1, keepdim=True).expand(n, m).t()
+              torch.pow(gf, 2).sum(dim=1, keepdim=True).expand(n, m).t()
     distmat.addmm_(1, -2, qf, gf.t())
     distmat = distmat.numpy()
 
