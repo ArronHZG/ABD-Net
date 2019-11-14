@@ -1,20 +1,10 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
-import os
 import glob
-import re
-import sys
-import urllib
-import tarfile
-import zipfile
 import os.path as osp
-from scipy.io import loadmat
-import numpy as np
-import h5py
+import zipfile
 
-from torchreid.utils.iotools import mkdir_if_missing, write_json, read_json
+import numpy as np
+
+from torchreid.utils.iotools import write_json, read_json
 from .bases import BaseImageDataset
 
 
@@ -47,7 +37,8 @@ class CUHK01(BaseImageDataset):
         self._prepare_split()
         splits = read_json(self.split_path)
         if split_id >= len(splits):
-            raise ValueError("split_id exceeds range, received {}, but expected between 0 and {}".format(split_id, len(splits)-1))
+            raise ValueError(
+                "split_id exceeds range, received {}, but expected between 0 and {}".format(split_id, len(splits) - 1))
         split = splits[split_id]
 
         train = split['train']
@@ -99,7 +90,7 @@ class CUHK01(BaseImageDataset):
             for img_path in img_paths:
                 img_name = osp.basename(img_path)
                 pid = int(img_name[:4]) - 1
-                camid = (int(img_name[4:7]) - 1) // 2 # result is either 0 or 1
+                camid = (int(img_name[4:7]) - 1) // 2  # result is either 0 or 1
                 img_list.append((img_path, pid, camid))
                 pid_container.add(pid)
 

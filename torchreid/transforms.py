@@ -1,17 +1,12 @@
-from __future__ import absolute_import
-from __future__ import division
-
-from torchvision.transforms import *
-import torchvision.transforms.functional as TF
-import torch
-
-from PIL import Image
-import random
-import numpy as np
 import math
+import random
+
+import torchvision.transforms.functional as TF
+from PIL import Image
+from torchvision.transforms import *
 
 
-class RandomErasing(object):
+class RandomErasing:
     '''
     Class that performs Random Erasing in Random Erasing Data Augmentation by Zhong et al.
     -------------------------------------------------------------------------------------
@@ -58,7 +53,7 @@ class RandomErasing(object):
         return img
 
 
-class Random2DTranslation(object):
+class Random2DTranslation:
     """
     With a probability, first increase image size to (1 + 1/8), and then perform random crop.
 
@@ -122,7 +117,6 @@ class Random2DTranslation(object):
 #     return transforms
 
 def build_training_transforms(height, width, data_augment):
-
     imagenet_mean = [0.485, 0.456, 0.406]
     imagenet_std = [0.229, 0.224, 0.225]
     normalize = Normalize(mean=imagenet_mean, std=imagenet_std)

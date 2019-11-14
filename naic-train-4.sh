@@ -35,14 +35,14 @@ python train.py \
     --start-epoch 0 --max-epoch 100 \
     --train-batch-size 128 \
     --test-batch-size 64 \
-    --fixbase-epoch 10 \
+    --fixbase-epoch 20 \
     --label-smooth \
     --criterion htri \
     --margin 1.2 \
     --num-instances 8 \
     --lambda-htri 0.1 \
     --arch resnet50 \
-    --flip-eval --eval-freq 10 \
+    --flip-eval --eval-freq 1 \
     --gpu-devices 0,1 \
     --branches global, abd, dan, np \
     --global-max-pooling \
@@ -55,6 +55,7 @@ python train.py \
     --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/4 \
 #    --load-weights
 #    --evaluate
+#    --visualize-ranks
 
 
 python train.py \
@@ -62,16 +63,16 @@ python train.py \
     --data-augment crop,color-jitter,random-erase \
     --optim adam --lr 5e-4 \
     --start-epoch 100 --max-epoch 200 \
-    --train-batch-size 128 \
+    --train-batch-size 40 \
     --test-batch-size 64 \
-    --fixbase-epoch 10 \
+    --fixbase-epoch 0 \
     --label-smooth \
     --criterion htri \
     --margin 1.2 \
     --num-instances 8 \
     --lambda-htri 0.1 \
     --arch resnet50 \
-    --flip-eval --eval-freq 10 \
+    --flip-eval --eval-freq 1 \
     --gpu-devices 0,1 \
     --branches global, abd, dan, np \
     --global-max-pooling \
@@ -82,4 +83,6 @@ python train.py \
     --of-start-epoch 100 \
     --use-ow \
     --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/4 \
-#    --load-weights
+    --load-weights
+#    --evaluate
+#    --visualize-ranks

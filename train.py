@@ -89,14 +89,22 @@ def main():
                               args=vars(args))
     print(model)
     print("Model size: {:.3f} M".format(count_num_param(model)))
-
+    print("criterion===>")
     criterion = get_criterion(dm.num_train_pids, use_gpu, args)
+    print(criterion)
+    print("regularizer===>")
     regularizer = get_regularizer(vars(args))
+    print(regularizer)
+    print("optimizer===>")
     optimizer = init_optimizer(model.parameters(), **optimizer_kwargs(args))
+    print(optimizer)
+    print("scheduler===>")
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min',
                                                            factor=0.8,
                                                            patience=3,
                                                            verbose=True)
+    print(scheduler)
+
 
     if args.load_weights and check_isfile(args.load_weights):
         # load pretrained weights but ignore layers that don't match in size
@@ -169,13 +177,13 @@ def main():
     for epoch in range(args.start_epoch, args.max_epoch):
         auto_reset_learning_rate(optimizer, args)
         start_train_time = time.time()
-        print(f"epoch {epoch + 1} now {now()}======================================================================")
-        print(criterion)
+        print(f"===========================start epoch {epoch + 1}  {now()}===========================================")
         print(f"lr:{optimizer.param_groups[0]['lr']}")
 
         loss = train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
         train_time += round(time.time() - start_train_time)
-
+        epoch_time = time.time()-start_train_time
+        print(f"epoch_time:{epoch_time/60}min {epoch_time%60}s")
 
         if use_gpu:
             state_dict = model.module.state_dict()
@@ -183,6 +191,8 @@ def main():
             state_dict = model.state_dict()
 
         scheduler.step(loss)
+
+        rank1 = 0
 
         if (epoch + 1) > args.start_eval and args.eval_freq > 0 and (epoch + 1) % args.eval_freq == 0 or (
                 epoch + 1) == args.max_epoch:

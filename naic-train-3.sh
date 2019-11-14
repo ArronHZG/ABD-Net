@@ -103,6 +103,7 @@ python train.py \
     --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/3 \
     --load-weights /home/arron/PycharmProjects/ABD-Net/model/naic/3/checkpoint_ep60.pth.tar
 #    --evaluate
+#    --visualize-ranks
 
 20
 Results ----------

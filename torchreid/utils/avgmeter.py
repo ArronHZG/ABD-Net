@@ -1,8 +1,4 @@
-from __future__ import absolute_import
-from __future__ import division
-
-
-class AverageMeter(object):
+class AverageMeter:
     """Computes and stores the average and current value.
        
        Code imported from https://github.com/pytorch/examples/blob/master/imagenet/main.py#L247-L262
