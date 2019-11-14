@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="605bf587-aeab-4ae3-93e0-a4a3589a1ab1" name="Default Changelist" comment="" />
+    <list default="true" id="605bf587-aeab-4ae3-93e0-a4a3589a1ab1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/torchreid/utils/reid_metric.py" beforeDir="false" afterPath="$PROJECT_DIR$/torchreid/utils/reid_metric.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,54 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="157" column="45" selection-start-line="157" selection-start-column="33" selection-end-line="157" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-                <element signature="e#1182#1664#0" />
-                <element signature="e#1220#1349#0" />
-                <element signature="e#1395#1558#0" />
-                <element signature="e#1682#1752#0" />
-                <element signature="e#1806#1940#0" />
-                <element signature="e#1858#1940#0" />
-                <element signature="e#4013#4108#0" />
-                <element signature="e#4557#5020#0" />
-                <element signature="e#5570#5785#0" />
-                <element signature="e#5988#6661#0" />
-                <element signature="e#6285#6482#0" />
-                <element signature="e#6729#8866#0" />
-                <element signature="e#7614#8606#0" />
-                <element signature="e#7692#8063#0" />
-                <element signature="e#8258#8606#0" />
-                <element signature="e#8320#8514#0" />
-                <element signature="e#8632#8786#0" />
-                <element signature="e#9796#11072#0" />
-                <element signature="e#10241#10289#0" />
-                <element signature="e#10375#10432#0" />
-                <element signature="e#10674#11046#0" />
-                <element signature="e#10680#10904#0" />
-                <element signature="e#11366#14066#0" />
-                <element signature="e#11632#12359#0" />
-                <element signature="e#11693#11949#0" />
-                <element signature="e#11984#12131#0" />
-                <element signature="e#12854#13605#0" />
-                <element signature="e#12943#13199#0" />
-                <element signature="e#13234#13377#0" />
-                <element signature="e#13875#14066#0" />
-                <element signature="e#14461#14580#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inference.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+            <state relative-caret-position="377">
+              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
               <folding>
                 <element signature="e#80#94#0" expanded="true" />
               </folding>
@@ -66,66 +27,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/torchreid/datasets/collate_batch.py">
+        <entry file="file://$PROJECT_DIR$/torchreid/utils/reid_metric.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/torchreid/datasets/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="46" column="24" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="24" />
+            <state relative-caret-position="106">
+              <caret line="194" column="22" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="22" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/args.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-225">
-              <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/naic-test-3.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/torchreid/data_manager.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="95" column="36" lean-forward="true" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/torchreid/transforms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#83#101#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,12 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>max</find>
-      <find>are missing.</find>
-      <find>max_r1</find>
-      <find>of_penalty</find>
-      <find>scheduler</find>
-      <find>optimizer</find>
       <find>rank1</find>
       <find>criterion</find>
       <find>end epoch</find>
@@ -155,7 +56,6 @@
       <find>visualize-ranks</find>
       <find>g_camids[order] == q_camid)</find>
       <find>Metric</find>
-      <find>adjust_rerank</find>
       <find>eval_func</find>
       <find>evaluate</find>
       <find>max_rank</find>
@@ -172,6 +72,13 @@
       <find>args.source_names</find>
       <find>num_train_pids</find>
       <find>source_names</find>
+      <find>reid_metric.py</find>
+      <find>R1_mAP_reranking</find>
+      <find>test</find>
+      <find>reid_metric</find>
+      <find>aligned_test</find>
+      <find>pcb_test</find>
+      <find>adjust_rerank</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -213,10 +120,10 @@
         <option value="$PROJECT_DIR$/torchreid/datasets/cuhk01.py" />
         <option value="$PROJECT_DIR$/torchreid/utils/re_ranking.py" />
         <option value="$PROJECT_DIR$/train.py" />
-        <option value="$PROJECT_DIR$/torchreid/utils/reid_metric.py" />
         <option value="$PROJECT_DIR$/torchreid/engine/inference.py" />
         <option value="$PROJECT_DIR$/naic-test-3.sh" />
         <option value="$PROJECT_DIR$/torchreid/transforms.py" />
+        <option value="$PROJECT_DIR$/torchreid/utils/reid_metric.py" />
         <option value="$PROJECT_DIR$/inference.py" />
       </list>
     </option>
@@ -241,6 +148,17 @@
             <path>
               <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
               <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
+              <item name="torchreid" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABD-Net" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABD-Net" type="462c0819:PsiDirectoryNode" />
+              <item name="torchreid" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -351,7 +269,7 @@
       <workItem from="1573612673463" duration="13229000" />
       <workItem from="1573696763295" duration="18505000" />
       <workItem from="1573736224837" duration="2361000" />
-      <workItem from="1573739155905" duration="3990000" />
+      <workItem from="1573739155905" duration="7172000" />
     </task>
     <task id="LOCAL-00001" summary="naic">
       <created>1573406676510</created>
@@ -430,11 +348,18 @@
       <option name="project" value="LOCAL" />
       <updated>1573743408801</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="inference">
+      <created>1573743652316</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1573743652316</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55311000" />
+    <option name="totallyTimeSpent" value="58493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -447,8 +372,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1381" height="925" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24377358" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09283019" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -462,7 +388,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32899868" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50037736" side_tool="true" weight="0.39011705" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.07282185" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.21846554" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32639793" />
       <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.49962264" weight="0.39011705" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -646,40 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/torchreid/models/resnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="e#329#721#0" />
-            <element signature="e#774#926#0" />
-            <element signature="e#962#1731#0" />
-            <element signature="e#1054#1381#0" />
-            <element signature="e#1417#1731#0" />
-            <element signature="e#1767#2881#0" />
-            <element signature="e#1859#2443#0" />
-            <element signature="e#2479#2881#0" />
-            <element signature="e#2913#4370#0" />
-            <element signature="e#2913#3032#1" />
-            <element signature="e#3096#3694#0" />
-            <element signature="e#3764#4370#0" />
-            <element signature="e#3863#4098#0" />
-            <element signature="e#4423#4923#0" />
-            <element signature="e#4423#4564#1" />
-            <element signature="e#6053#6421#0" />
-            <element signature="e#6464#6503#0" />
-            <element signature="e#6771#6949#0" />
-            <element signature="e#6992#7014#0" />
-            <element signature="e#7050#7073#0" />
-            <element signature="e#7437#7685#0" />
-            <element signature="e#7492#7546#0" />
-            <element signature="e#7633#7685#0" />
-            <element signature="e#7718#7931#0" />
-            <element signature="e#8121#8216#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/torchreid/models/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -704,60 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/torchreid/components/branches.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="61" column="36" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="36" />
-          <folding>
-            <element signature="e#354#555#0" />
-            <element signature="e#615#636#0" />
-            <element signature="e#723#744#0" />
-            <element signature="e#976#1337#0" />
-            <element signature="e#1392#1740#0" />
-            <element signature="e#2378#2726#0" />
-            <element signature="e#2873#3026#0" />
-            <element signature="e#3062#3783#0" />
-            <element signature="e#3331#3600#0" />
-            <element signature="e#3682#3783#0" />
-            <element signature="e#3824#4014#0" />
-            <element signature="e#3861#4014#0" />
-            <element signature="e#4586#4595#0" />
-            <element signature="e#4638#4765#0" />
-            <element signature="e#4806#5220#0" />
-            <element signature="e#5257#5528#0" />
-            <element signature="e#6451#6460#0" />
-            <element signature="e#6503#6619#0" />
-            <element signature="e#6660#7071#0" />
-            <element signature="e#7108#8096#0" />
-            <element signature="e#7386#7716#0" />
-            <element signature="e#7759#8053#0" />
-            <element signature="e#8132#11951#0" />
-            <element signature="e#8194#8599#0" />
-            <element signature="e#8642#8651#0" />
-            <element signature="e#8695#8930#0" />
-            <element signature="e#8789#8930#0" />
-            <element signature="e#8978#9243#0" />
-            <element signature="e#9293#10681#0" />
-            <element signature="e#9860#10136#0" />
-            <element signature="e#10188#10464#0" />
-            <element signature="e#10718#11951#0" />
-            <element signature="e#11060#11906#0" />
-            <element signature="e#11157#11543#0" />
-            <element signature="e#11282#11437#0" />
-            <element signature="e#11580#11700#0" />
-            <element signature="e#11987#14438#0" />
-            <element signature="e#12049#12377#0" />
-            <element signature="e#12420#12429#0" />
-            <element signature="e#12472#12635#0" />
-            <element signature="e#12685#13934#0" />
-            <element signature="e#13249#13565#0" />
-            <element signature="e#13617#13934#0" />
-            <element signature="e#13971#14438#0" />
-            <element signature="e#14139#14208#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,16 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/torchreid/utils/reid_metric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-          <folding>
-            <element signature="e#83#101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/naic-train-4.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
@@ -989,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="157" column="45" selection-start-line="157" selection-start-column="33" selection-end-line="157" selection-end-column="45" />
+        <state relative-caret-position="227">
+          <caret line="329" column="53" selection-start-line="329" selection-start-column="46" selection-end-line="329" selection-end-column="53" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#1182#1664#0" />
@@ -1015,10 +843,6 @@
             <element signature="e#10375#10432#0" />
             <element signature="e#10674#11046#0" />
             <element signature="e#10680#10904#0" />
-            <element signature="e#11366#14066#0" />
-            <element signature="e#11632#12359#0" />
-            <element signature="e#11693#11949#0" />
-            <element signature="e#11984#12131#0" />
             <element signature="e#12854#13605#0" />
             <element signature="e#12943#13199#0" />
             <element signature="e#13234#13377#0" />
@@ -1028,10 +852,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/torchreid/models/resnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="262" column="58" selection-start-line="262" selection-start-column="40" selection-end-line="262" selection-end-column="58" />
+          <folding>
+            <element signature="e#329#721#0" />
+            <element signature="e#774#926#0" />
+            <element signature="e#962#1731#0" />
+            <element signature="e#1054#1381#0" />
+            <element signature="e#1417#1731#0" />
+            <element signature="e#1767#2881#0" />
+            <element signature="e#1859#2443#0" />
+            <element signature="e#2479#2881#0" />
+            <element signature="e#2913#4370#0" />
+            <element signature="e#2913#3032#1" />
+            <element signature="e#3096#3694#0" />
+            <element signature="e#3764#4370#0" />
+            <element signature="e#3863#4098#0" />
+            <element signature="e#4423#4923#0" />
+            <element signature="e#4423#4564#1" />
+            <element signature="e#4968#5634#0" />
+            <element signature="e#5020#5385#0" />
+            <element signature="e#5428#5467#0" />
+            <element signature="e#5504#5634#0" />
+            <element signature="e#5676#5950#0" />
+            <element signature="e#5728#5826#0" />
+            <element signature="e#5869#5891#0" />
+            <element signature="e#5927#5950#0" />
+            <element signature="e#6001#6670#0" />
+            <element signature="e#6053#6421#0" />
+            <element signature="e#6464#6503#0" />
+            <element signature="e#6540#6670#0" />
+            <element signature="e#6719#7073#0" />
+            <element signature="e#6771#6949#0" />
+            <element signature="e#6992#7014#0" />
+            <element signature="e#7050#7073#0" />
+            <element signature="e#7437#7685#0" />
+            <element signature="e#7492#7546#0" />
+            <element signature="e#7633#7685#0" />
+            <element signature="e#7718#7931#0" />
+            <element signature="e#8121#8216#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/torchreid/components/branches.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+          <folding>
+            <element signature="e#354#555#0" />
+            <element signature="e#615#636#0" />
+            <element signature="e#723#744#0" />
+            <element signature="e#976#1337#0" />
+            <element signature="e#1392#1740#0" />
+            <element signature="e#2378#2726#0" />
+            <element signature="e#2873#3026#0" />
+            <element signature="e#3331#3600#0" />
+            <element signature="e#3824#4014#0" />
+            <element signature="e#3861#4014#0" />
+            <element signature="e#4586#4595#0" />
+            <element signature="e#4638#4765#0" />
+            <element signature="e#4806#5220#0" />
+            <element signature="e#5257#5528#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/torchreid/utils/reid_metric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="194" column="22" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="22" />
+          <folding>
+            <element signature="e#83#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="62" lean-forward="true" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+        <state relative-caret-position="377">
+          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
           <folding>
             <element signature="e#80#94#0" expanded="true" />
           </folding>

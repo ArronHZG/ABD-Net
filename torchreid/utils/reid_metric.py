@@ -191,8 +191,14 @@ class R1_mAP(Metric):
 
         # return cmc, mAP
 
+
 class R1_mAP_reranking(Metric):
-    def __init__(self, num_query, datasets, aligned_test, pcb_test, adjust_rerank, max_rank=50, feat_norm='yes'):
+    def __init__(self, num_query, datasets,
+                 aligned_test=False,
+                 pcb_test=False,
+                 adjust_rerank=False,
+                 max_rank=50,
+                 feat_norm='yes'):
         super(R1_mAP_reranking, self).__init__()
         self.num_query = num_query
         self.max_rank = max_rank
@@ -320,17 +326,19 @@ class R1_mAP_reranking(Metric):
             local_g_g_dist_all = []
             if self.pcb_test or self.aligned_test:
                 for i in range(local_qf.shape[2]):
-
                     local_q_g_dist = self.compute_dist(
-                        local_qf[:, :, i].cpu().detach().numpy(), local_gf[:, :, i].cpu().detach().numpy(), type='euclidean')
+                        local_qf[:, :, i].cpu().detach().numpy(), local_gf[:, :, i].cpu().detach().numpy(),
+                        type='euclidean')
                     local_q_g_dist_all.append(local_q_g_dist)
 
                     local_q_q_dist = self.compute_dist(
-                        local_qf[:, :, i].cpu().detach().numpy(), local_qf[:, :, i].cpu().detach().numpy(), type='euclidean')
+                        local_qf[:, :, i].cpu().detach().numpy(), local_qf[:, :, i].cpu().detach().numpy(),
+                        type='euclidean')
                     local_q_q_dist_all.append(local_q_q_dist)
 
                     local_g_g_dist = self.compute_dist(
-                        local_gf[:, :, i].cpu().detach().numpy(), local_gf[:, :, i].cpu().detach().numpy(), type='euclidean')
+                        local_gf[:, :, i].cpu().detach().numpy(), local_gf[:, :, i].cpu().detach().numpy(),
+                        type='euclidean')
 
                     local_g_g_dist_all.append(local_g_g_dist)
 
@@ -339,10 +347,9 @@ class R1_mAP_reranking(Metric):
             global_local_q_q_dist = global_q_q_dist
 
             for i in range(len(local_g_g_dist_all)):
-
-                global_local_g_g_dist += local_g_g_dist_all[i]/len(local_g_g_dist_all)
-                global_local_q_g_dist += local_q_g_dist_all[i]/len(local_g_g_dist_all)
-                global_local_q_q_dist += local_q_q_dist_all[i]/len(local_g_g_dist_all)
+                global_local_g_g_dist += local_g_g_dist_all[i] / len(local_g_g_dist_all)
+                global_local_q_g_dist += local_q_g_dist_all[i] / len(local_g_g_dist_all)
+                global_local_q_q_dist += local_q_q_dist_all[i] / len(local_g_g_dist_all)
 
         else:
             qf = feats[:self.num_query]

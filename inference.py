@@ -22,6 +22,7 @@ from torchreid.utils.reid_metric import R1_mAP, R1_mAP_reranking
 
 max_tank = 50
 
+
 def create_supervised_evaluator(model,
                                 metrics,
                                 device=None):
@@ -64,7 +65,8 @@ def inference(
         re_ranking,
         feat_norm,
         val_loader,
-        num_query
+        num_query,
+        dataset
 ):
     logger = logging.getLogger("reid_baseline.inference")
     logger.info("Enter inferencing")
@@ -72,12 +74,12 @@ def inference(
     if re_ranking == 'no':
         print("Create evaluator")
         evaluator = create_supervised_evaluator(model, metrics={
-            'r1_mAP': R1_mAP(num_query, max_rank=max_tank, feat_norm=feat_norm)},
+            'r1_mAP': R1_mAP(num_query, dataset, max_rank=max_tank, feat_norm=feat_norm)},
                                                 device=device)
     elif re_ranking == 'yes':
         print("Create evaluator for reranking")
         evaluator = create_supervised_evaluator(model, metrics={
-            'r1_mAP': R1_mAP_reranking(num_query, max_rank=max_tank, feat_norm=feat_norm)},
+            'r1_mAP': R1_mAP_reranking(num_query, dataset, max_rank=max_tank, feat_norm=feat_norm)},
                                                 device=device)
     else:
         print("Unsupported re_ranking config. Only support for no or yes, but got {}.".format(re_ranking))
@@ -148,4 +150,4 @@ if __name__ == '__main__':
     FEAT_NORM = 'yes'
     num_query = 0
 
-    inference(model, device, RE_RANKING, FEAT_NORM, val_loader, num_query)
+    inference(model, device, RE_RANKING, FEAT_NORM, val_loader, num_query, dataset)
