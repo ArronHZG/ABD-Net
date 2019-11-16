@@ -27,6 +27,7 @@ python train.py -s naic \
 
 
 
+
 # ==> BatchTime(s)/BatchSize(img): 0.411/100
 # Computing CMC and mAP
 # Results ----------

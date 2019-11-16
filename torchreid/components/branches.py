@@ -1,12 +1,13 @@
 import weakref
+from collections import defaultdict
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from collections import defaultdict
 
-from torchreid.utils.torchtools import init_params
 from torchreid.components.attention import get_attention_module_instance
+from torchreid.utils.torchtools import init_params
+
 
 class MultiBranchNetwork(nn.Module):
 
@@ -32,7 +33,6 @@ class MultiBranchNetwork(nn.Module):
         for branch_name in branch_names:
 
             if 'global' == branch_name:
-
                 middle_subbranch = self._get_middle_subbranch_for(backbone, args, GlobalBranch)
                 global_branch = GlobalBranch(self, backbone, args, middle_subbranch.out_dim)
 
@@ -107,14 +107,13 @@ class MultiBranchNetwork(nn.Module):
 
         fmap_dict = {k: tuple(v) for k, v in fmap_dict.items()}
 
-        return torch.cat(predict_features, 1), tuple(xent_features),\
-            tuple(triplet_features), fmap_dict
+        return torch.cat(predict_features, 1), tuple(xent_features), \
+               tuple(triplet_features), fmap_dict
 
 
 class Sequential(nn.Sequential):
 
     def backbone_modules(self):
-
         backbone_modules = []
         for m in self._modules.values():
             backbone_modules.append(m.backbone_modules())
@@ -246,7 +245,7 @@ class NPBranch(nn.Module):
 
         triplet, xent, predict = [], [], []
 
-        assert x.size(2) % self.part_num == 0,\
+        assert x.size(2) % self.part_num == 0, \
             "Height {} is not a multiplication of {}. Aborted.".format(x.size(2), self.part_num)
         margin = x.size(2) // self.part_num
 
@@ -321,9 +320,13 @@ class ABDBranch(nn.Module):
 
         args = self.args
         self.dan_module_names = set()
-        DAN_module_names = {'cam', 'pam'} & set(args['abd_dan'])
-        use_head = not args['abd_dan_no_head']
-        self.use_dan = bool(DAN_module_names)
+        # DAN_module_names = {'cam', 'pam'} & set(args['abd_dan'])
+        # use_head = not args['abd_dan_no_head']
+        # self.use_dan = bool(DAN_module_names)
+
+        DAN_module_names = {'cam', 'pam'}
+        use_head = False
+        self.use_dan = True
 
         before_module = get_attention_module_instance(
             'identity',
@@ -336,6 +339,7 @@ class ABDBranch(nn.Module):
             init_params(before_module)
 
         if 'cam' in DAN_module_names:
+            print("using cam")
             cam_module = get_attention_module_instance(
                 'cam',
                 self.output_dim,
@@ -346,6 +350,7 @@ class ABDBranch(nn.Module):
             self.cam_module = cam_module
 
         if 'pam' in DAN_module_names:
+            print("using pam")
             pam_module = get_attention_module_instance(
                 'pam',
                 self.output_dim,
@@ -362,6 +367,8 @@ class ABDBranch(nn.Module):
         init_params(sum_conv)
         self.sum_conv = sum_conv
 
+        print(f"dan_module_names {self.dan_module_names}")
+
     def forward(self, x):
 
         predict, xent, triplet = [], [], []
@@ -369,7 +376,7 @@ class ABDBranch(nn.Module):
 
         x = self.reduction(x)
 
-        assert x.size(2) % self.part_num == 0,\
+        assert x.size(2) % self.part_num == 0, \
             "Height {} is not a multiplication of {}. Aborted.".format(x.size(2), self.part_num)
 
         margin = x.size(2) // self.part_num
@@ -426,6 +433,8 @@ class DANBranch(nn.Module):
         return []
 
     def _init_classifier(self):
+
+        print(f"len(self.dan_module_names){self.dan_module_names}")
 
         classifier = nn.Linear(len(self.dan_module_names) * self.output_dim, self.owner().num_classes)
         init_params(classifier)

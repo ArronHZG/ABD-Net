@@ -30,59 +30,31 @@
 
 python train.py \
     --root /home/arron/dataset -s naic -t naic  -j 16 \
-    --data-augment crop,color-jitter,random-erase \
+    --data-augment crop color-jitter random-erase \
     --optim adam --lr 5e-4 \
     --start-epoch 0 --max-epoch 150 \
-    --train-batch-size 128 \
+    --train-batch-size 36 \
     --test-batch-size 64 \
-    --fixbase-epoch 0 \
+    --fixbase-epoch 10 \
     --label-smooth \
     --criterion htri \
     --margin 1.2 \
-    --num-instances 8 \
+    --num-instances 4 \
     --lambda-htri 0.1 \
     --arch resnet50 \
     --flip-eval --eval-freq 1 \
-    --gpu-devices 0,1 \
-    --branches global, abd, dan, np \
+    --gpu-devices 0 \
+    --branches global abd np \
     --global-max-pooling \
     --shallow-cam \
     --np-with-global \
     --np-max-pooling \
+    --abd-np 2 \
+    --abd-dan cam pam \
     --use-of \
-    --of-start-epoch 150 \
+    --of-start-epoch 30 \
     --use-ow \
-    --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/4 \
-    --resume /home/arron/PycharmProjects/ABD-Net/model/naic/4/checkpoint_best.pth.tar
-#    --evaluate
-#    --visualize-ranks
-
-
-python train.py \
-    --root /home/arron/dataset -s naic -t naic  -j 16 \
-    --data-augment crop,color-jitter,random-erase \
-    --optim adam --lr 5e-4 \
-    --start-epoch 150 --max-epoch 200 \
-    --train-batch-size 32 \
-    --test-batch-size 64 \
-    --fixbase-epoch 0 \
-    --label-smooth \
-    --criterion htri \
-    --margin 1.2 \
-    --num-instances 8 \
-    --lambda-htri 0.1 \
-    --arch resnet50 \
-    --flip-eval --eval-freq 1 \
-    --gpu-devices 0,1 \
-    --branches global, abd, dan, np \
-    --global-max-pooling \
-    --shallow-cam \
-    --np-with-global \
-    --np-max-pooling \
-    --use-of \
-    --of-start-epoch 150 \
-    --use-ow \
-    --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/4 \
-    --resume /home/arron/PycharmProjects/ABD-Net/model/naic/4/checkpoint_best.pth.tar
+    --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/5 \
+#    --resume /home/arron/PycharmProjects/ABD-Net/model/naic/5/checkpoint_best.pth.tar
 #    --evaluate
 #    --visualize-ranks

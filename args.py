@@ -183,7 +183,7 @@ def argument_parser():
     parser.add_argument('--np-max-pooling', action='store_true')
 
     parser.add_argument('--dan-dim', type=int, default=1024)
-    parser.add_argument('--dan-dan', nargs='+', type=str, default=[])
+    parser.add_argument('--dan-dan', nargs='+', type=str, default=['cam', 'pam'])
     parser.add_argument('--dan-dan-no-head', action='store_true')
 
     parser.add_argument('--use-of', action='store_true')

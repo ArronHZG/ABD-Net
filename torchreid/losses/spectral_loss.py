@@ -65,6 +65,7 @@ class SpectralLoss(nn.Module):
         _, y, _, feature_dict = inputs
 
         existed_positions = frozenset(feature_dict.keys())
+
         missing = self.penalty_position - existed_positions
         if missing:
             raise RuntimeError('Cannot apply singular loss, as positions {!r} are missing.'.format(list(missing)))
