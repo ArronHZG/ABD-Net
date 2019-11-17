@@ -9,7 +9,7 @@ def init_optimizer(params,
                    weight_decay=5e-4,
                    momentum=0.9, # momentum factor for sgd and rmsprop
                    sgd_dampening=0, # sgd's dampening for momentum
-                   sgd_nesterov=False, # whether to enable sgd's Nesterov momentum
+                   sgd_nesterov=True, # whether to enable sgd's Nesterov momentum
                    rmsprop_alpha=0.99, # rmsprop's smoothing constant
                    adam_beta1=0.9, # exponential decay rate for adam's first moment
                    adam_beta2=0.999 # # exponential decay rate for adam's second moment

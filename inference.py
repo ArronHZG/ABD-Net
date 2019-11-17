@@ -92,11 +92,11 @@ def inference(
         logger.info("CMC curve, Rank-{:<3}:{:.1%}".format(r, cmc[r - 1]))
 
 
-parser = argument_parser()
-args = parser.parse_args()
 
 if __name__ == '__main__':
 
+    parser = argument_parser()
+    args = parser.parse_args()
     use_gpu = torch.cuda.is_available()
     if use_gpu:
         print("Currently using GPU {}".format(args.gpu_devices))

@@ -1,3 +1,4 @@
+rm /home/arron/PycharmProjects/ABD-Net/model/naic/8/log_train.txt
 # Dataset statistics:
 #   ----------------------------------------
 #   subset   | # ids | # images | # cameras
@@ -31,11 +32,11 @@
 python train.py \
     --root /home/arron/dataset -s naic -t naic  -j 16 \
     --data-augment crop color-jitter random-erase \
-    --optim adam --lr 5e-4 \
+    --optim sgd --lr 5e-3 \
     --start-epoch 0 --max-epoch 150 \
-    --train-batch-size 60 \
+    --train-batch-size 40 \
     --test-batch-size 64 \
-    --fixbase-epoch 10 \
+    --fixbase-epoch 20 \
     --label-smooth \
     --criterion htri \
     --margin 1.2 \
@@ -52,7 +53,7 @@ python train.py \
     --abd-np 2 \
     --abd-dan cam pam \
     --use-of \
-    --of-start-epoch 30 \
+    --of-start-epoch 50 \
     --use-ow \
     --save-dir /home/arron/PycharmProjects/ABD-Net/model/naic/8 \
 #    --resume /home/arron/PycharmProjects/ABD-Net/model/naic/8/checkpoint_best.pth.tar

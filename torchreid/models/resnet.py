@@ -270,7 +270,7 @@ def resnet50_backbone():
         layers=[3, 4, 6, 3],
         last_stride=1,  # Always remove down-sampling
     )
-    init_pretrained_weights(network, model_urls['resnet50'])
+    # init_pretrained_weights(network, model_urls['resnet50'])
 
     return network
 

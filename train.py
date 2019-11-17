@@ -8,7 +8,6 @@ import time
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
-import torch.nn as nn
 from apex import amp
 
 from args import argument_parser, image_dataset_kwargs, optimizer_kwargs
@@ -140,7 +139,7 @@ def main():
 
     if use_apex:
         print("using apex")
-        model, optimizer = amp.initialize(model, optimizer, opt_level="O2")
+        model, optimizer = amp.initialize(model, optimizer, opt_level="O0")
 
     if args.evaluate:
         print("Evaluate only")
@@ -181,19 +180,13 @@ def main():
 
     for epoch in range(args.start_epoch, args.max_epoch):
         auto_reset_learning_rate(optimizer, args)
-        start_train_time = time.time()
+
         print(f"===========================start epoch {epoch + 1}  {now()}===========================================")
         print(f"lr:{optimizer.param_groups[0]['lr']}")
 
         loss = train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
         train_time += round(time.time() - start_train_time)
-        epoch_time = time.time() - start_train_time
-        print(f"epoch_time:{epoch_time / 60}min {epoch_time % 60}s")
-
-        if use_gpu:
-            state_dict = model.module.state_dict()
-        else:
-            state_dict = model.state_dict()
+        state_dict = model.state_dict()
 
         rank1 = 0
 
@@ -207,11 +200,6 @@ def main():
                 galleryloader = testloader_dict[name]['gallery'], testloader_dict[name]['gallery_flip']
                 rank1 = test(model, queryloader, galleryloader, use_gpu)
                 ranklogger.write(name, epoch + 1, rank1)
-
-            if use_gpu:
-                state_dict = model.module.state_dict()
-            else:
-                state_dict = model.state_dict()
 
             if max_r1 < rank1:
                 print('Save!', max_r1, rank1)
@@ -241,6 +229,7 @@ def main():
 
 
 def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False):
+    start_train_time = time.time()
     if not fixbase and args.use_of and epoch >= args.of_start_epoch:
         print('Using OF')
 
@@ -306,6 +295,8 @@ def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu,
                 epoch + 1, batch_idx + 1, len(trainloader), batch_time=batch_time,
                 data_time=data_time, loss=losses))
         end = time.time()
+    epoch_time = time.time() - start_train_time
+    print(f"epoch_time:{epoch_time // 60} min {int(epoch_time) % 60}s")
     return losses.avg
 
 
