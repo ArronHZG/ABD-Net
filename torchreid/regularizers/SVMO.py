@@ -19,6 +19,8 @@ class SVMORegularizer(nn.Module):
 
     def dominant_eigenvalue(self, A: 'N x N'):
 
+        A = A.float()
+
         N, _ = A.size()
         x = torch.rand(N, 1, device='cuda')
 

@@ -1,6 +1,3 @@
-from __future__ import division
-from __future__ import print_function
-
 import datetime
 import logging
 import os
@@ -12,6 +9,7 @@ import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 import torch.nn as nn
+from apex import amp
 
 from args import argument_parser, image_dataset_kwargs, optimizer_kwargs
 from torchreid import models
@@ -60,7 +58,11 @@ def auto_reset_learning_rate(optimizer, args):
             param_group['lr'] = args.lr
 
 
+use_apex = True
+
+
 def main():
+    global use_apex
     global args
 
     torch.manual_seed(args.seed)
@@ -89,6 +91,9 @@ def main():
                               args=vars(args))
     print(model)
     print("Model size: {:.3f} M".format(count_num_param(model)))
+    if use_gpu:
+        print("using gpu")
+        model = model.cuda()
     print("criterion===>")
     criterion = get_criterion(dm.num_train_pids, use_gpu, args)
     print(criterion)
@@ -99,12 +104,11 @@ def main():
     optimizer = init_optimizer(model.parameters(), **optimizer_kwargs(args))
     print(optimizer)
     print("scheduler===>")
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min',
-                                                           factor=0.8,
-                                                           patience=3,
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'max',
+                                                           factor=0.1,
+                                                           patience=5,
                                                            verbose=True)
     print(scheduler)
-
 
     if args.load_weights and check_isfile(args.load_weights):
         # load pretrained weights but ignore layers that don't match in size
@@ -129,13 +133,14 @@ def main():
         state.update(checkpoint['state_dict'])
         model.load_state_dict(state)
         optimizer.load_state_dict(checkpoint['optimizer'])
-        # args.start_epoch = checkpoint['epoch'] + 1
+        args.start_epoch = checkpoint['epoch'] + 1
         max_r1 = checkpoint['rank1']
         print("Loaded checkpoint from '{}'".format(args.resume))
         print("- start_epoch: {}\n- rank1: {}".format(args.start_epoch, checkpoint['rank1']))
 
-    if use_gpu:
-        model = nn.DataParallel(model).cuda()
+    if use_apex:
+        print("using apex")
+        model, optimizer = amp.initialize(model, optimizer, opt_level="O2")
 
     if args.evaluate:
         print("Evaluate only")
@@ -182,15 +187,13 @@ def main():
 
         loss = train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu, fixbase=False)
         train_time += round(time.time() - start_train_time)
-        epoch_time = time.time()-start_train_time
-        print(f"epoch_time:{epoch_time/60}min {epoch_time%60}s")
+        epoch_time = time.time() - start_train_time
+        print(f"epoch_time:{epoch_time / 60}min {epoch_time % 60}s")
 
         if use_gpu:
             state_dict = model.module.state_dict()
         else:
             state_dict = model.state_dict()
-
-        scheduler.step(loss)
 
         rank1 = 0
 
@@ -227,6 +230,8 @@ def main():
             'epoch': epoch,
             'optimizer': optimizer.state_dict(),
         }, False, osp.join(args.save_dir, 'checkpoint_ep' + str(epoch + 1) + '.pth.tar'))
+
+        scheduler.step(rank1)
 
     elapsed = round(time.time() - start_time)
     elapsed = str(datetime.timedelta(seconds=elapsed))
@@ -280,7 +285,12 @@ def train(epoch, model, criterion, regularizer, optimizer, trainloader, use_gpu,
             loss += penalty
 
         optimizer.zero_grad()
-        loss.backward()
+
+        if use_apex:
+            with amp.scale_loss(loss, optimizer) as scaled_loss:
+                scaled_loss.backward()
+        else:
+            loss.backward()
 
         optimizer.step()
 

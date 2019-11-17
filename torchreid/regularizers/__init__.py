@@ -15,7 +15,7 @@ mapping = {
 class ConvRegularizer(nn.Module):
 
     def __init__(self, klass, controller):
-        super().__init__()
+        super(ConvRegularizer,self).__init__()
         self.reg_instance = klass(controller)
 
     def get_all_conv_layers(self, module):
@@ -34,7 +34,7 @@ class ConvRegularizer(nn.Module):
         if ignore:
             return accumulator
 
-        for conv in self.get_all_conv_layers(net.module.backbone_modules()):
+        for conv in self.get_all_conv_layers(net.backbone_modules()):
             accumulator += self.reg_instance(conv.weight)
 
         # print(accumulator.data)

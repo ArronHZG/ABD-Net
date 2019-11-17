@@ -12,7 +12,7 @@ from torchreid.utils.torchtools import init_params
 class MultiBranchNetwork(nn.Module):
 
     def __init__(self, backbone, args, num_classes, **kwargs):
-        super().__init__()
+        super(MultiBranchNetwork, self).__init__()
 
         self.num_classes = num_classes
         self.common_branch = self._get_common_branch(backbone, args)

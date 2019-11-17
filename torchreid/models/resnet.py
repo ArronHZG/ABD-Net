@@ -1,17 +1,16 @@
 from __future__ import absolute_import
 from __future__ import division
 
-from torch import nn
-import torch.utils.model_zoo as model_zoo
+import logging
 from copy import deepcopy
+
+import torch.utils.model_zoo as model_zoo
+from torch import nn
 
 from torchreid.components import branches
 from torchreid.components.shallow_cam import ShallowCAM
 
-import logging
-
 logger = logging.getLogger(__name__)
-
 
 model_urls = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
@@ -109,7 +108,7 @@ class ResNet(nn.Module):
 
     def __init__(self, block, layers, last_stride=2):
         self.inplanes = 64
-        super().__init__()
+        super(ResNet, self).__init__()
 
         # backbone network
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
@@ -138,6 +137,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
+
 def init_pretrained_weights(model, model_url):
     """Initializes model with pretrained weights.
 
@@ -154,8 +154,7 @@ def init_pretrained_weights(model, model_url):
 class ResNetCommonBranch(nn.Module):
 
     def __init__(self, owner, backbone, args):
-
-        super().__init__()
+        super(ResNetCommonBranch, self).__init__()
 
         self.backbone1 = nn.Sequential(
             backbone.conv1,
@@ -171,39 +170,36 @@ class ResNetCommonBranch(nn.Module):
         )
 
     def backbone_modules(self):
-
         return [self.backbone1, self.backbone2]
 
     def forward(self, x):
-
         x = self.backbone1(x)
         intermediate = x = self.shallow_cam(x)
         x = self.backbone2(x)
 
         return x, intermediate
 
+
 class ResNetDeepBranch(nn.Module):
 
     def __init__(self, owner, backbone, args):
-
-        super().__init__()
+        super(ResNetDeepBranch, self).__init__()
 
         self.backbone = deepcopy(backbone.layer4)
 
         self.out_dim = 2048
 
     def backbone_modules(self):
-
         return [self.backbone]
 
     def forward(self, x):
         return self.backbone(x)
 
+
 class ResNetMGNLikeCommonBranch(nn.Module):
 
     def __init__(self, owner, backbone, args):
-
-        super().__init__()
+        super(ResNetMGNLikeCommonBranch, self).__init__()
 
         self.backbone1 = nn.Sequential(
             backbone.conv1,
@@ -219,22 +215,20 @@ class ResNetMGNLikeCommonBranch(nn.Module):
         )
 
     def backbone_modules(self):
-
         return [self.backbone1, self.backbone2]
 
     def forward(self, x):
-
         x = self.backbone1(x)
         intermediate = x = self.shallow_cam(x)
         x = self.backbone2(x)
 
         return x, intermediate
 
+
 class ResNetMGNLikeDeepBranch(nn.Module):
 
     def __init__(self, owner, backbone, args):
-
-        super().__init__()
+        super(ResNetMGNLikeDeepBranch, self).__init__()
 
         self.backbone = nn.Sequential(
             *deepcopy(backbone.layer3[1:]),
@@ -243,7 +237,6 @@ class ResNetMGNLikeDeepBranch(nn.Module):
         self.out_dim = 2048
 
     def backbone_modules(self):
-
         return [self.backbone]
 
     def forward(self, x):
@@ -252,27 +245,26 @@ class ResNetMGNLikeDeepBranch(nn.Module):
 
 class MultiBranchResNet(branches.MultiBranchNetwork):
 
-    def _get_common_branch(self, backbone, args):
+    # def __init__(self,backbone, args, num_classes, **kwargs):
+    #     super(MultiBranchResNet, self).__init__(backbone, args, num_classes, **kwargs)
 
+    def _get_common_branch(self, backbone, args):
         return ResNetCommonBranch(self, backbone, args)
 
     def _get_middle_subbranch_for(self, backbone, args, last_branch_class):
-
         return ResNetDeepBranch(self, backbone, args)
+
 
 class MultiBranchMGNLikeResNet(branches.MultiBranchNetwork):
 
     def _get_common_branch(self, backbone, args):
-
         return ResNetMGNLikeCommonBranch(self, backbone, args)
 
     def _get_middle_subbranch_for(self, backbone, args, last_branch_class):
-
         return ResNetMGNLikeDeepBranch(self, backbone, args)
 
 
 def resnet50_backbone():
-
     network = ResNet(
         block=Bottleneck,
         layers=[3, 4, 6, 3],
@@ -284,11 +276,10 @@ def resnet50_backbone():
 
 
 def resnet50(num_classes, args, **kw):
-
     backbone = resnet50_backbone()
     return MultiBranchResNet(backbone, args, num_classes)
 
-def resnet50_mgn_like(num_classes, args, **kw):
 
+def resnet50_mgn_like(num_classes, args, **kw):
     backbone = resnet50_backbone()
     return MultiBranchMGNLikeResNet(backbone, args, num_classes)
